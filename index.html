@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhisocute Dupe Script</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:Arial;
+      overflow:hidden;
+
+      background:url("skibidi.webp");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+     background:rgba(10,0,25,0.55);
+      backdrop-filter:blur(4px);
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+
+      background:rgba(35, 20, 60, 0.82);
+      padding:35px;
+      border-radius:20px;
+      width:380px;
+      text-align:center;
+
+      box-shadow:
+0 0 25px rgba(0,0,0,0.5),
+0 0 30px rgba(140,0,255,0.35),
+0 0 60px rgba(0,255,255,0.15);
+
+      animation:fadeIn 0.7s ease;
+    }
+
+    h1{
+      margin-bottom:25px;
+      font-size:24px;
+
+      padding:12px;
+      border-radius:14px;
+
+      background:linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        red
+      );
+
+      background-size:400%;
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      animation:rainbow 6s linear infinite;
+    }
+
+    button,a{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      cursor:pointer;
+      margin-top:15px;
+      text-decoration:none;
+      display:block;
+      color:white;
+      position:relative;
+      overflow:hidden;
+      transition:0.25s;
+    }
+
+    button:hover,
+    a:hover{
+      transform:scale(1.03);
+    }
+
+    .subscribe{
+      background:#ff0000;
+    }
+
+    .like{
+      background:#2196f3;
+    }
+
+    .comment{
+      background:#ff9800;
+    }
+
+    .download{
+      background:#00c853;
+    }
+
+    .locked{
+      background:gray;
+      pointer-events:none;
+      opacity:0.6;
+    }
+
+    .done{
+      background:#00c853 !important;
+    }
+
+    .check{
+      position:absolute;
+      right:15px;
+      opacity:0;
+      transform:scale(0);
+    }
+
+    .show{
+      animation:pop 0.4s forwards;
+    }
+
+    .downloadIcon{
+      margin-right:8px;
+      display:inline-block;
+      transition:0.3s;
+    }
+
+    @keyframes pop{
+
+      0%{
+        transform:scale(0);
+        opacity:0;
+      }
+
+      70%{
+        transform:scale(1.4);
+        opacity:1;
+      }
+
+      100%{
+        transform:scale(1);
+        opacity:1;
+      }
+
+    }
+
+    @keyframes rainbow{
+
+      0%{
+        background-position:0%;
+      }
+
+      100%{
+        background-position:400%;
+      }
+
+    }
+
+    @keyframes fadeIn{
+
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+  <h1>[WOLVES]Nhisocute Dupe Script</h1>
+
+  <button id="subBtn" class="subscribe" onclick="subscribeChannel()">
+    Subscribe Channel
+    <span id="subCheck" class="check">✔</span>
+  </button>
+
+  <button id="likeBtn" class="like" onclick="likeVideo()">
+    Like Video
+    <span id="likeCheck" class="check">✔</span>
+  </button>
+
+  <button id="commentBtn" class="comment" onclick="commentVideo()">
+    Comment Video
+    <span id="commentCheck" class="check">✔</span>
+  </button>
+
+  <a id="downloadBtn"
+     class="download locked"
+     href="dupe.rar"
+     download>
+
+     <span id="downloadIcon" class="downloadIcon">🔒</span>
+
+     Download File
+
+  </a>
+
+</div>
+
+<script>
+
+  let subscribed = false;
+  let liked = false;
+  let commented = false;
+
+  function subscribeChannel(){
+
+    window.open(
+      "https://www.youtube.com/@WOLVESnhisocute",
+      "_blank"
+    );
+
+    subscribed = true;
+
+    completeButton(
+      "subBtn",
+      "subCheck"
+    );
+
+    unlockDownload();
+  }
+
+  function likeVideo(){
+
+    window.open(
+      "https://www.youtube.com/watch?v=YMJ0SpdWeNU",
+      "_blank"
+    );
+
+    liked = true;
+
+    completeButton(
+      "likeBtn",
+      "likeCheck"
+    );
+
+    unlockDownload();
+  }
+
+  function commentVideo(){
+
+    window.open(
+      "https://www.youtube.com/watch?v=YMJ0SpdWeNU",
+      "_blank"
+    );
+
+    commented = true;
+
+    completeButton(
+      "commentBtn",
+      "commentCheck"
+    );
+
+    unlockDownload();
+  }
+
+  function completeButton(buttonId, checkId){
+
+    document
+      .getElementById(buttonId)
+      .classList
+      .add("done");
+
+    document
+      .getElementById(checkId)
+      .classList
+      .add("show");
+  }
+
+  function unlockDownload(){
+
+    if(subscribed && liked && commented){
+
+      const btn =
+      document.getElementById("downloadBtn");
+
+      btn.classList.remove("locked");
+
+      const icon =
+      document.getElementById("downloadIcon");
+
+      icon.innerHTML = "🔓";
+
+      icon.style.animation =
+      "pop 0.5s";
+    }
+  }
+
+</script>
+
+</body>
+</html>
